@@ -1,0 +1,142 @@
+body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, hr, dl, dd, ol, ul, figure
+    margin: 0
+    padding: 0
+
+body
+    font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family
+    color: $text-color
+    background-color: $background-color
+    -webkit-text-size-adjust: 100%
+    -webkit-font-feature-settings: "kern" 1
+    -moz-font-feature-settings: "kern" 1
+    -o-font-feature-settings: "kern" 1
+    font-feature-settings: "kern" 1
+    font-kerning: normal
+
+    box-sizing: border-box
+    *
+        box-sizing: inherit
+
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure, %vertical-rhythm
+    margin-bottom: $spacing-unit / 2
+
+img
+    max-width: 100%
+    vertical-align: middle
+
+figure>img
+    display: block
+
+figcaption
+    font-size: $small-font-size
+
+ul, ol
+    margin-left: $spacing-unit
+    &.seamless
+        margin-left: auto
+        list-style: none
+
+li
+    >ul, >ol
+        margin-bottom: 0
+
+h1, h2, h3, h4, h5, h6
+    font-weight: $base-font-weight
+
+%ui-transition
+    transition: .3s ease-in-out
+
+a
+    color: $ui-color-light
+    text-decoration: none
+    @extend %ui-transition
+    &:hover, &:focus, &:active
+        color: $text-color
+        text-decoration: underline
+
+blockquote
+    color: $grey-color
+    border-left: 4px solid $grey-color-light
+    padding-left: $spacing-unit / 2
+    font-size: 18px
+    letter-spacing: -1px
+    font-style: italic
+    > :last-child
+        margin-bottom: 0
+
+pre, code
+    font-size: 15px
+    border: 1px solid $grey-color-light
+    border-radius: 3px
+    background-color: #eef
+
+code
+    padding: 1px 5px
+
+pre
+    padding: 8px 12px
+    overflow-x: auto
+    >code
+        border: 0
+        padding-right: 0
+        padding-left: 0
+
+.wrapper
+    max-width: $content-width
+    margin-right: auto
+    margin-left: auto
+    padding-right: $spacing-unit
+    padding-left: $spacing-unit
+    @extend %clearfix
+    @include media-query($on-laptop)
+        padding-right: $spacing-unit / 2
+        padding-left: $spacing-unit / 2
+
+    &.large
+        max-width: $large-content-width
+
+    &.small
+        max-width: $on-laptop
+
+    &.mini
+        max-width: $on-palm
+
+%clearfix
+    &:after
+        content: ""
+        display: table
+        clear: both
+
+.icon
+    >svg
+        display: inline-block
+        width: 16px
+        height: 16px
+        vertical-align: middle
+        color: inherit
+        >*
+            fill: currentcolor
+
++module(btn)
+    display: inline-block
+    vertical-align: middle
+    text-align: center
+    text-decoration: none
+    outline: none
+    padding-left: 15px
+    padding-right: 15px
+    background-color: $ui-color
+    font-family: $ui-font-family
+    color: #fff
+    border-radius: 4px
+    box-shadow: 0 3px 10px 0 rgba(black, .3)
+    &:hover, &:focus, &:active
+        text-decoration: none
+        color: #fff
+        box-shadow: 0 3px 15px 0 rgba(black, .5)
+    
+    +variant(large)
+        font-size: 2em
+        padding-left: 30px
+        padding-right: 30px
+
