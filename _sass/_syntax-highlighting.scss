@@ -2,7 +2,6 @@
  * Syntax highlighting styles
  */
 .highlight {
-    background: #fff;
     @extend %vertical-rhythm;
 
     .highlighter-rouge & {
@@ -17,13 +16,13 @@
     .cp    { color: #999; font-weight: bold } // Comment.Preproc
     .c1    { color: #998; font-style: italic } // Comment.Single
     .cs    { color: #999; font-weight: bold; font-style: italic } // Comment.Special
-    .gd    { color: #000; background-color: #fdd } // Generic.Deleted
-    .gd .x { color: #000; background-color: #faa } // Generic.Deleted.Specific
+    .gd    { color: #fff; background-color: #fdd } // Generic.Deleted
+    .gd .x { color: #fff; background-color: #faa } // Generic.Deleted.Specific
     .ge    { font-style: italic } // Generic.Emph
     .gr    { color: #a00 } // Generic.Error
     .gh    { color: #999 } // Generic.Heading
-    .gi    { color: #000; background-color: #dfd } // Generic.Inserted
-    .gi .x { color: #000; background-color: #afa } // Generic.Inserted.Specific
+    .gi    { color: #fff; background-color: #dfd } // Generic.Inserted
+    .gi .x { color: #fff; background-color: #afa } // Generic.Inserted.Specific
     .go    { color: #888 } // Generic.Output
     .gp    { color: #555 } // Generic.Prompt
     .gs    { font-weight: bold } // Generic.Strong
