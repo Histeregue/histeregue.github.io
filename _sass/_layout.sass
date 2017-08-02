@@ -5,7 +5,7 @@
     left: 0
     right: 0
     a
-        color: $grey-color-light
+        color: $grey-color
 
 .site-title
     font-size: 26px
@@ -67,8 +67,9 @@
             margin-left: 20px
 
 .site-footer
-    border-top: 1px solid $grey-color-light
     padding: $spacing-unit 0
+    a
+        color: $grey-color
 
 .footer-heading
     font-size: 18px
@@ -80,7 +81,7 @@
 
 .hero
     background-color: $brand-color
-    color: #fff
+    background-image: radial-gradient(ellipse at bottom, rgba(#fff, .3), rgba(black, .3))
     padding-top: $spacing-unit * 4
     padding-bottom: $spacing-unit * 4
 
@@ -88,21 +89,18 @@
         padding-top: $spacing-unit * 2
         padding-bottom: $spacing-unit * 2
 
-    a:not([data-btn])
-        color: $ui-color-light
-
     &.dark
         background-color: $grey-color-dark
     
     &.light
         background-color: $brand-color-light
         a:not([data-btn])
-            color: $brand-color
+            color: $link-color
 
-    &.grey
+    &.blue
         background-color: $grey-color-light
         a:not([data-btn])
-            color: $ui-color
+            color: $link-color
 
 .page-heading
     font-size: 20px
