@@ -6,7 +6,10 @@
 
       <div data-cell="2of3">
         <h2 class="footer-heading">{{ site.title }}</h2>
-        <p>{{ site.description }}</p>
+        <p>
+          {{ site.description }} 
+          <a href="{{ "/feed.xml" | prepend: site.baseurl }}">Assine o feed</a>
+        </p>
       </div>
 
       <ul class="seamless" data-cell="shrink fill">

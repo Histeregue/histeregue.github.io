@@ -2,22 +2,32 @@
 layout: default
 ---
 
-<div class="page-content">
-  <div class="wrapper">
-    <h1 class="page-heading">Posts</h1>
-  
-    <ul class="post-list">
-      {% for post in site.posts %}
-        <li>
-          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-  
-          <h2>
-            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-          </h2>
-        </li>
-      {% endfor %}
-    </ul>
-  
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-  </div>
+<div class="page-content slider">
+  {% for post in site.posts limit:5 %}
+    <article class="slide" data-grid="center">
+      {% if post.cover %}
+      <div class="post-cover">
+        <img src="{{ post.cover }}" alt="{{ post.title }}">
+      </div>
+      {% endif %}
+      <div class="wrapper">
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <h2 class="post-title">
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+        <p class="post-excerpt">{{ post.excerpt | truncatewords: 25, '...' }}</p>
+      </div>
+    </article>
+  {% endfor %}
 </div>
+
+<script src="{{ site.baseurl }}/js/slider.js"></script>
+<script>
+  window.onload = function(){
+    document.body.classList.add('home-slider');
+    var posts = Slider({duration: 5000});
+    posts.play()
+    .on('mouseover', function(){ posts.pause() })
+    .on('mouseout', function(){ posts.play() });
+  }
+</script>

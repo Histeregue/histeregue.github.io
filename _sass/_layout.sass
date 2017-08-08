@@ -1,9 +1,5 @@
 .site-header
     min-height: 56px
-    position: absolute
-    top: 0
-    left: 0
-    right: 0
     a
         color: $grey-color
 
@@ -126,10 +122,49 @@
 .post-content
     margin-bottom: $spacing-unit
 
-    > 
-        h1, h2, h3, h4, h5, h6, p, 
-        blockquote, pre, ul, ol, dl, figure, table
-            @extend .wrapper
-
-        blockquote, ul, ol
-            padding-left: $spacing-unit * 2
++media-greater($on-palm)
+    .home-slider
+        %fullscreen
+            position: fixed
+            top: 0
+            left: 0
+            right: 0
+            bottom: 0
+        .site-header, .site-footer
+            @extend %fullscreen
+            z-index: 999
+        .site-header
+            bottom: auto
+        .site-footer
+            top: auto
+        .slider
+            @extend %fullscreen
+            .slide
+                @extend %fullscreen
+                z-index: 9
+                opacity: 0
+                .post-cover
+                    @extend %fullscreen
+                    z-index: -1
+                    background-color: $background-color
+                    img
+                        max-width: initial
+                        min-width: 100%
+                        min-height: 100%
+                        position: absolute
+                        top: 50%
+                        left: 50%
+                        transform: translate(-50%, -50%)
+                        opacity: .1
+                &.prev, &.next, &.current
+                    transition: .5s ease-in-out
+                &.prev, &.next
+                    z-index: 9
+                    opacity: 0
+                &.prev
+                    transform: translate(-100%)
+                &.next
+                    transform: translate(100%)
+                &.current
+                    z-index: 99
+                    opacity: 1
