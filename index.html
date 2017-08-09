@@ -4,30 +4,69 @@ layout: default
 
 <div class="page-content slider">
   {% for post in site.posts limit:5 %}
-    <article class="slide" data-grid="center">
+    <article class="slide">
       {% if post.cover %}
-      <div class="post-cover">
+      <figure class="post-cover">
         <img src="{{ post.cover }}" alt="{{ post.title }}">
-      </div>
+      </figure>
       {% endif %}
-      <div class="wrapper">
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <h2 class="post-title">
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-        <p class="post-excerpt">{{ post.excerpt | truncatewords: 25, '...' }}</p>
-      </div>
+      <section class="slide-content" data-grid="center">
+        <div class="wrapper">
+          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+          <h2 class="post-title">
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          </h2>
+          <p class="post-excerpt">{{ post.excerpt | truncatewords: 25, '...' }}</p>
+        </div>
+      </section>
     </article>
   {% endfor %}
 </div>
 
-<script src="{{ site.baseurl }}/js/slider.js"></script>
 <script>
-  window.onload = function(){
-    document.body.classList.add('home-slider');
-    var posts = Slider({duration: 5000});
-    posts.play()
-    .on('mouseover', function(){ posts.pause() })
-    .on('mouseout', function(){ posts.play() });
+var vw = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+var vh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+if (vw > 600 && vh > 600) {
+  window.onload = function() {
+    function addScript(src, callback) {
+      var s = document.createElement('script');
+      s.setAttribute('src', src);
+      s.onload = callback;
+      document.body.appendChild(s);
+    }
+    addScript('{{ site.baseurl }}/js/slider.js', function(){
+      document.body.classList.add('home-slider');
+      var posts = Slider({duration: 5000});
+      posts.play();
+
+      var controlsbottom = document.querySelector('.site-footer').offsetHeight;
+      var controls = document.createElement('div');
+      controls.style.bottom = controlsbottom + 'px';
+      controls.className = 'wrapper slider-controls';
+      controls.setAttribute('data-grid', 'center spacing');
+      var prev = createButton('slider-control', 'VOLTAR', '{% include btn-prev.svg %}', function(){posts.prev();});
+      var next = createButton('slider-control', 'AVANÇAR', '{% include btn-next.svg %}', function(){posts.next();});
+      var playpause = createButton('slider-control', 'PLAY/PAUSA', '<span class="play" title="CONTINUAR">{% include btn-play.svg %}</span><span class="pause" title="PAUSAR">{% include btn-pause.svg %}</span>', function(btn){
+        posts.playpause();
+        if(posts.isPlaying) btn.setAttribute('data-icon', 'pause');
+        else btn.setAttribute('data-icon', 'play');
+      });
+      playpause.setAttribute('data-icon', 'pause');
+      controls.appendChild(prev);
+      controls.appendChild(playpause);
+      controls.appendChild(next);
+      posts.parent.appendChild(controls);
+    });
+    function createButton(btnClass, btnTitle, btnContent, btnAction) {
+      var newButton = document.createElement('a');
+      newButton.href = 'javascript:;';
+      newButton.className = btnClass;
+      newButton.setAttribute('data-cell', 'shrink');
+      newButton.setAttribute('title', btnTitle);
+      newButton.innerHTML = btnContent;
+      newButton.addEventListener('click', function(){if(btnAction) btnAction(this);});
+      return newButton;
+    }
   }
+}
 </script>

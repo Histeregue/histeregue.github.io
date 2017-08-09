@@ -168,3 +168,30 @@
                 &.current
                     z-index: 99
                     opacity: 1
+            .slide-content
+                @extend %fullscreen
+            
+            &-controls
+                position: absolute
+                left: 0
+                right: 0
+                z-index: 9999
+                .slider-control
+                    margin-left: 15px
+                    color: $grey-color
+                    &:hover, &:focus, &:active
+                        color: #fff
+                    svg
+                        display: inline-block
+                        vertical-align: middle
+                        width: 40px
+                        height: 40px
+                        color: inherit
+                        > *
+                            fill: currentcolor
+                    &[data-icon="play"]
+                        .pause
+                            display: none
+                    &[data-icon="pause"]
+                        .play
+                            display: none

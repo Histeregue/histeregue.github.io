@@ -30,16 +30,29 @@ Slider.prototype =
         @playingStateID = setInterval () ->
                 that.next()
             , @duration
+        @isPlaying = true
         @
     pause: () ->
         clearInterval @playingStateID
+        @isPlaying = false
         @
+    playpause: () ->
+        if @isPlaying
+            @pause()
+        else
+            @play()
     prev: () ->
         if @index > 0 then @index-- else @index = @children.length - 1
+        playingState = @isPlaying
+        @pause() if playingState
         @compose()
+        @play() if playingState
     next: () ->
         if @index < @children.length - 1 then @index++ else @index = 0
+        playingState = @isPlaying
+        @pause() if playingState
         @compose()
+        @play() if playingState
     on: (event, fn) ->
         that = @
         @parent.addEventListener event, fn
@@ -49,12 +62,12 @@ Slider.prototype =
         @parent.removeEventListener event, fn
         @
     inspect: () ->
-        console.group @config.parentSelector
+        console.group @parentSelector
         try
             console.info @children.length + ' slides'
         catch err
             console.error err
-        console.groupEnd @config.parentSelector
+        console.groupEnd @parentSelector
         @
 
 window.Slider = Slider
