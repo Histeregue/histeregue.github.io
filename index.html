@@ -12,11 +12,11 @@ layout: default
       {% endif %}
       <section class="slide-content" data-grid="center">
         <div class="wrapper">
-          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+          <span class="post-meta">{{ forloop.index }}/{{ forloop.length }} {{ post.date | date: "%b %-d, %Y" }}</span>
           <h2 class="post-title">
             <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
           </h2>
-          <p class="post-excerpt">{{ post.excerpt | truncatewords: 25, '...' }}</p>
+          <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 25, '...' }}</p>
         </div>
       </section>
     </article>
@@ -27,6 +27,7 @@ layout: default
 var vw = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 var vh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 if (vw > 600 && vh > 600) {
+  document.body.classList.add('home-slider');
   window.onload = function() {
     function addScript(src, callback) {
       var s = document.createElement('script');
@@ -35,7 +36,6 @@ if (vw > 600 && vh > 600) {
       document.body.appendChild(s);
     }
     addScript('{{ site.baseurl }}/js/slider.js', function(){
-      document.body.classList.add('home-slider');
       var posts = Slider({duration: 5000});
       posts.play();
 

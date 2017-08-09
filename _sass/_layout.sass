@@ -158,17 +158,39 @@
                         transform: translate(-50%, -50%)
                         opacity: .1
                 &.prev, &.next, &.current
+                    transition: 1s ease-in-out
+                %slide-contents
                     transition: .5s ease-in-out
+                .post-meta
+                    @extend %slide-contents
+                .post-title
+                    @extend %slide-contents
+                .post-excerpt
+                    @extend %slide-contents
                 &.prev, &.next
                     z-index: 9
                     opacity: 0
+                    .post-title, .post-excerpt, .post-meta
+                        opacity: 0
                 &.prev
                     transform: translate(-100%)
+                    .post-title
+                        transform: translate(-100%)
+                    .post-excerpt
+                        transform: translate(-50%)
                 &.next
                     transform: translate(100%)
+                    .post-title
+                        transform: translate(100%)
+                    .post-excerpt
+                        transform: translate(50%)
                 &.current
                     z-index: 99
                     opacity: 1
+                    .post-title
+                        transition-delay: .5s
+                    .post-excerpt
+                        transition-delay: .75s
             .slide-content
                 @extend %fullscreen
             
