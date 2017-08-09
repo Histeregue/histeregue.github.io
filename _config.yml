@@ -5,9 +5,9 @@ baseurl: ""
 url: "http://histeregue.com.br"
 
 fonts: 
-  - Quicksand
-  - Righteous
-  - Saira
+  - Quicksand # $base-font-size
+  - Righteous # $title-font-size
+  - Saira # ui-font-size
 
 twitter_username: histeregue
 github_username:  Histeregue
