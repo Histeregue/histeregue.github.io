@@ -2,4 +2,8 @@
 ---
 @charset "utf-8"
 
+$base-font-family  : '{{ site.fonts[0] | replace: "+", " " }}', sans-serif
+$title-font-family : '{{ site.fonts[1] | replace: "+", " " }}', sans-serif
+$ui-font-family    : '{{ site.fonts[2] | replace: "+", " " }}', sans-serif
+
 @import vars, mixins, base, grid, forms, layout, syntax-highlighting

@@ -42,7 +42,13 @@ li
         margin-bottom: 0
 
 h1, h2, h3, h4, h5, h6
-    font-weight: $base-font-weight
+    font:
+        family: $title-font-family
+        weight: $base-font-weight
+
+@for $i from 1 through 6
+    h#{$i}
+        font-size: $base-font-size + $base-font-size / $i * 2
 
 %ui-transition
     transition: .3s ease-in-out

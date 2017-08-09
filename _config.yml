@@ -4,6 +4,11 @@ description: >
 baseurl: ""
 url: "http://histeregue.com.br"
 
+fonts: 
+  - Quicksand
+  - Righteous
+  - Saira
+
 twitter_username: jekyllrb
 github_username:  Histeregue
 

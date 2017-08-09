@@ -2,6 +2,7 @@
     min-height: 56px
     a
         color: $grey-color
+        font-family: $ui-font-family
 
 .site-title
     font-size: 26px
@@ -106,15 +107,15 @@
     color: $grey-color
 
 .post-link
-    display: block
-    font-size: 24px
+    display: inline-block
+    &:hover, &:focus, &:active
+        text-decoration: none
+        color: #fff
 
 .post-header
     margin-bottom: $spacing-unit
 
 .post-title
-    font-size: 42px
-    letter-spacing: -1px
     line-height: 1
     @include media-query($on-laptop)
         font-size: 36px
