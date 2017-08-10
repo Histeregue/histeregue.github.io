@@ -12,7 +12,10 @@ layout: default
       {% endif %}
       <section class="slide-content" data-grid="center">
         <div class="wrapper">
-          <span class="post-meta">{{ forloop.index }}/{{ forloop.length }} {{ post.date | date: "%b %-d, %Y" }}</span>
+          <span class="post-meta">
+            {{ post.date | date: "%b %-d, %Y" }}
+            {% for c in post.categories %}<span data-label="">{{ c }}</span> {% endfor %}
+          </span>
           <h2 class="post-title">
             <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
           </h2>

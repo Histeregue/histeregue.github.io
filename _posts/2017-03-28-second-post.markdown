@@ -1,6 +1,6 @@
 ---
 title:  "Welcome to my second post!"
-categories: jekyll update
+categories: blog
 cover: https://images5.alphacoders.com/403/403408.jpg
 ---
 
