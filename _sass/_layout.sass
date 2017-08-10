@@ -79,8 +79,7 @@
 .hero
     background-color: $brand-color
     background-image: radial-gradient(ellipse at bottom, rgba(#fff, .3), rgba(black, .3))
-    padding-top: $spacing-unit * 4
-    padding-bottom: $spacing-unit * 4
+    padding: $spacing-unit * 4 $spacing-unit
 
     +media-query($on-palm)
         padding-top: $spacing-unit * 2
@@ -114,6 +113,10 @@
 
 .post-header
     margin-bottom: $spacing-unit
+
+.post-cover
+    img
+        margin: auto
 
 .post-title
     line-height: 1
