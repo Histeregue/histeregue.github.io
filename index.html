@@ -45,11 +45,11 @@ if (vw > 600 && vh > 600) {
       var controlsbottom = document.querySelector('.site-footer').offsetHeight;
       var controls = document.createElement('div');
       controls.style.bottom = controlsbottom + 'px';
-      controls.className = 'wrapper slider-controls';
-      controls.setAttribute('data-grid', 'center spacing');
-      var prev = createButton('slider-control', 'VOLTAR', '{% include btn-prev.svg %}', function(){posts.prev();});
-      var next = createButton('slider-control', 'AVANÇAR', '{% include btn-next.svg %}', function(){posts.next();});
-      var playpause = createButton('slider-control', 'PLAY/PAUSA', '<span class="play" title="CONTINUAR">{% include btn-play.svg %}</span><span class="pause" title="PAUSAR">{% include btn-pause.svg %}</span>', function(btn){
+      controls.className = 'slider-controls';
+      controls.setAttribute('data-grid', 'justify');
+      var prev = createButton('slider-control prev', 'VOLTAR', '{% include btn-prev.svg %}', function(){posts.prev();});
+      var next = createButton('slider-control next', 'AVANÇAR', '{% include btn-next.svg %}', function(){posts.next();});
+      var playpause = createButton('slider-control playpause', 'PLAY/PAUSA', '<span class="play" title="CONTINUAR">{% include btn-play.svg %}</span><span class="pause" title="PAUSAR">{% include btn-pause.svg %}</span>', function(btn){
         posts.playpause();
         if(posts.isPlaying) btn.setAttribute('data-icon', 'pause');
         else btn.setAttribute('data-icon', 'play');
