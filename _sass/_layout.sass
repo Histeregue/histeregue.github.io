@@ -224,4 +224,11 @@
                             display: none
                     +media-greater($large-content-width)
                         &.prev, &.next
-                            margin-top: -15%
+                            position: fixed
+                            top: 50%
+                        &.prev
+                            left: 0
+                        &.next
+                            right: 0
+                        &.playpause
+                            margin: auto
