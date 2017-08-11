@@ -16,7 +16,7 @@ Slider.prototype =
     compose: () ->
         prevIndex = if @index > 0 then @index - 1 else @children.length - 1
         nextIndex = if @index < @children.length - 1 then @index + 1 else 0
-        @children.forEach (el) ->
+        Array.prototype.forEach.call @children, (el) ->
             el.classList.remove 'prev'
             el.classList.remove 'current'
             el.classList.remove 'next'
