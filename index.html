@@ -30,36 +30,34 @@ layout: default
 var vw = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 var vh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 if (vw > 600 && vh > 600) {
+
   document.body.classList.add('home-slider');
+
   window.onload = function() {
+
+    addScript('{{ site.baseurl }}/js/slider.js', function(){
+      var posts = Slider({duration: 5000})
+        .on('mouseover', function(){ posts.pause(); })
+        .on('mouseout' , function(){ posts.play(); })
+        .play();
+
+      var controlsbottom = document.querySelector('.site-footer').offsetHeight + 'px';
+      var controls = document.createElement('div');
+      controls.className = 'slider-controls';
+      controls.style.bottom = controlsbottom;
+      controls.setAttribute('data-grid', 'justify');
+      controls.appendChild(createButton('slider-control prev', 'VOLTAR', '{% include btn-prev.svg %}', function(){posts.prev();}));
+      controls.appendChild(createButton('slider-control next', 'AVANÇAR', '{% include btn-next.svg %}', function(){posts.next();}));
+      posts.parent.appendChild(controls);
+    });
+
     function addScript(src, callback) {
       var s = document.createElement('script');
       s.setAttribute('src', src);
       s.onload = callback;
       document.body.appendChild(s);
     }
-    addScript('{{ site.baseurl }}/js/slider.js', function(){
-      var posts = Slider({duration: 5000});
-      posts.play();
 
-      var controlsbottom = document.querySelector('.site-footer').offsetHeight;
-      var controls = document.createElement('div');
-      controls.style.bottom = controlsbottom + 'px';
-      controls.className = 'slider-controls';
-      controls.setAttribute('data-grid', 'justify');
-      var prev = createButton('slider-control prev', 'VOLTAR', '{% include btn-prev.svg %}', function(){posts.prev();});
-      var next = createButton('slider-control next', 'AVANÇAR', '{% include btn-next.svg %}', function(){posts.next();});
-      var playpause = createButton('slider-control playpause', 'PLAY/PAUSA', '<span class="play" title="CONTINUAR">{% include btn-play.svg %}</span><span class="pause" title="PAUSAR">{% include btn-pause.svg %}</span>', function(btn){
-        posts.playpause();
-        if(posts.isPlaying) btn.setAttribute('data-icon', 'pause');
-        else btn.setAttribute('data-icon', 'play');
-      });
-      playpause.setAttribute('data-icon', 'pause');
-      controls.appendChild(prev);
-      controls.appendChild(playpause);
-      controls.appendChild(next);
-      posts.parent.appendChild(controls);
-    });
     function createButton(btnClass, btnTitle, btnContent, btnAction) {
       var newButton = document.createElement('a');
       newButton.href = 'javascript:;';
@@ -70,6 +68,8 @@ if (vw > 600 && vh > 600) {
       newButton.addEventListener('click', function(){if(btnAction) btnAction(this);});
       return newButton;
     }
+
   }
+
 }
 </script>
