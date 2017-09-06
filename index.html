@@ -33,41 +33,70 @@ if (vw > 600 && vh > 600) {
 
   document.body.classList.add('home-slider');
 
-  window.onload = function() {
+  window.onload = function () {
 
-    addScript('{{ site.baseurl }}/js/slider.js', function(){
-      var posts = Slider({duration: 5000})
-        .on('mouseover', function(){ posts.pause(); })
-        .on('mouseout' , function(){ posts.play(); })
-        .play();
-
-      var controlsbottom = document.querySelector('.site-footer').offsetHeight + 'px';
-      var controls = document.createElement('div');
-      controls.className = 'slider-controls';
-      controls.style.bottom = controlsbottom;
-      controls.setAttribute('data-grid', 'justify');
-      controls.appendChild(createButton('slider-control prev', 'VOLTAR', '{% include btn-prev.svg %}', function(){posts.prev();}));
-      controls.appendChild(createButton('slider-control next', 'AVANÇAR', '{% include btn-next.svg %}', function(){posts.next();}));
-      posts.parent.appendChild(controls);
-    });
-
-    function addScript(src, callback) {
+    var addScript = function (src, callback) {
       var s = document.createElement('script');
       s.setAttribute('src', src);
       s.onload = callback;
       document.body.appendChild(s);
-    }
+    };
 
-    function createButton(btnClass, btnTitle, btnContent, btnAction) {
-      var newButton = document.createElement('a');
-      newButton.href = 'javascript:;';
-      newButton.className = btnClass;
-      newButton.setAttribute('data-cell', 'shrink');
-      newButton.setAttribute('title', btnTitle);
-      newButton.innerHTML = btnContent;
-      newButton.addEventListener('click', function(){if(btnAction) btnAction(this);});
+    var createElement = function (el, attrs) {
+      var newElem = document.createElement(el);
+      if (attrs) {
+        for (name in attrs) {
+          val = attrs[name];
+          newElem[name] = val;
+        }
+      }
+      return newElem;
+    };
+
+    var createButton = function (attrs, btnAction) {
+      var newButton = createElement('button', attrs);
+      if (typeof btnAction === 'function') {
+        newButton.addEventListener('click', function () {
+          btnAction(this);
+        });
+      }
       return newButton;
-    }
+    };
+
+    addScript('{{ site.baseurl }}/js/slider.js', function () {
+      var posts = Slider({
+          duration: 5000
+        })
+        .on('mouseover', function () {
+          posts.pause();
+        })
+        .on('mouseout', function () {
+          posts.play();
+        })
+        .play();
+
+      var controlsbottom = document.querySelector('.site-footer').offsetHeight + 'px';
+      var controls = createElement('div', {
+        'className': 'slider-controls'
+      });
+      controls.setAttribute('data-grid', 'justify');
+      controls.style.bottom = controlsbottom;
+      controls.appendChild(createButton({
+        className: 'slider-control prev',
+        title: 'VOLTAR',
+        innerHTML: '{% include btn-prev.svg %}'
+      }, function () {
+        posts.prev();
+      }));
+      controls.appendChild(createButton({
+        className: 'slider-control next',
+        title: 'AVANÇAR',
+        innerHTML: '{% include btn-next.svg %}'
+      }, function () {
+        posts.next();
+      }));
+      posts.parent.appendChild(controls);
+    });
 
   }
 
