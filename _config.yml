@@ -15,8 +15,8 @@ defaults:
   values:
     layout: post
     permalink: post/:title/
-    cover_image:
-    audio:
+    cover_image: 
+    audio: 
 description: 'O podcast preferido do Capitão América.
 
 '
