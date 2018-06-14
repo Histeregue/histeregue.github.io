@@ -1,7 +1,9 @@
 ---
-title:  "Saiu! Estamos iniciando os trabalhos"
-categories: blog
-cover: /img/posts/igor-trepes-pink.jpg
+title: Saiu! Estamos iniciando os trabalhos
+date: 2017-08-05 00:00:00 Z
+categories:
+- blog
+cover: "/img/posts/igor-trepes-pink.jpg"
 ---
 
 Lorem ipsum dolor sit amet... brincadeira! Esse é o primeiro post, só pra dizer que estamos nos preparando para começar a produzir o podcast que o Steve vai ouvir toda semana, pois ele gosta de referências.

@@ -1,35 +1,36 @@
+---
 title: Histeregue Podcast
-description: > 
-  O podcast preferido do Capitão América.
-baseurl: ""
-url: "http://histeregue.com.br"
+timezone: UTC
+collections:
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
+defaults:
+- scope:
+    path: ''
+    type: posts
+  values:
+    layout: post
+    permalink: post/:title/
+description: 'O podcast preferido do Capitão América.
 
-fonts: 
-  - Quicksand # $base-font-size
-  - Righteous # $title-font-size
-  - Saira # ui-font-size
-
+'
+baseurl: ''
+url: http://histeregue.com.br
+fonts:
+- Quicksand
+- Righteous
+- Saira
 twitter_username: histeregue
-github_username:  Histeregue
-
+github_username: Histeregue
 markdown: kramdown
-
 sass:
   style: compressed
-
 plugins:
-  - jekyll-coffeescript
-  - jekyll-paginate
-
+- jekyll-coffeescript
+- jekyll-paginate
 paginate: 10
 paginate_path: timeline/:num/
-
-defaults:
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      permalink: post/:title/
-

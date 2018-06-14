@@ -1,6 +1,8 @@
 ---
-title:  "Welcome to my second post!"
-categories: blog
+title: Welcome to my second post!
+date: 2017-03-28 00:00:00 Z
+categories:
+- blog
 cover: https://images5.alphacoders.com/403/403408.jpg
 ---
 
