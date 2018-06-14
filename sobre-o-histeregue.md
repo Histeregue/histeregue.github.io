@@ -1,6 +1,5 @@
 ---
 title: Histeregue podcast
-permalink: "/sobre-o-histeregue/"
 layout: page
 menu-title: Sobre
 ---

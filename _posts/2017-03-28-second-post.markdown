@@ -3,7 +3,7 @@ title: Welcome to my second post!
 date: 2017-03-28 00:00:00 Z
 categories:
 - blog
-cover: https://images5.alphacoders.com/403/403408.jpg
+cover_image: https://images5.alphacoders.com/403/403408.jpg
 ---
 
 Consequuntur libero magnam, voluptas nulla aspernatur molestiae, error molestias commodi voluptatum voluptatibus obcaecati! Dignissimos assumenda vero possimus molestiae illo aspernatur optio architecto!

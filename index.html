@@ -5,9 +5,9 @@ layout: default
 <div class="page-content slider">
   {% for post in site.posts limit:5 %}
     <article class="slide">
-      {% if post.cover %}
+      {% if post.cover_image %}
       <figure class="post-cover">
-        <img src="{{ post.cover }}" alt="{{ post.title }}">
+        <img src="{{ post.cover_image }}" alt="{{ post.title }}">
       </figure>
       {% endif %}
       <section class="slide-content" data-grid="center">

@@ -1,8 +1,8 @@
-var gulp        = require('gulp');
+var gulp = require('gulp');
 var browserSync = require('browser-sync');
-var cp          = require('child_process');
+var cp = require('child_process');
 
-var jekyll   = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
+var jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 var messages = {
     jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
 };
@@ -12,7 +12,9 @@ var messages = {
  */
 gulp.task('jekyll-build', function (done) {
     browserSync.notify(messages.jekyllBuild);
-    return cp.spawn(jekyll, ['build'], {stdio: 'inherit'})
+    return cp.spawn(jekyll, ['build'], {
+            stdio: 'inherit'
+        })
         .on('close', done);
 });
 
@@ -26,7 +28,7 @@ gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
 /**
  * Wait for jekyll-build, then launch the Server
  */
-gulp.task('browser-sync', ['jekyll-build'], function() {
+gulp.task('browser-sync', ['jekyll-build'], function () {
     browserSync({
         server: {
             baseDir: '_site'
@@ -39,7 +41,17 @@ gulp.task('browser-sync', ['jekyll-build'], function() {
  * if you add folder for pages, collection or datas, add them to this list
  */
 gulp.task('watch', function () {
-    gulp.watch(['./*', '_layouts/*', '_includes/*', '_data/*', 'blog/*', '_posts/*', '_sass/*', 'css/*', 'js/*'], ['jekyll-rebuild']);
+    gulp.watch([
+        './*',
+        '_layouts/*',
+        '_includes/*',
+        '_data/*',
+        'blog/*',
+        '_posts/*',
+        '_sass/*',
+        'css/*',
+        'js/*'
+    ], ['jekyll-rebuild']);
 });
 
 /**

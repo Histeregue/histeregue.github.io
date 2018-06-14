@@ -15,11 +15,14 @@ defaults:
   values:
     layout: post
     permalink: post/:title/
+    cover_image:
+    audio:
 description: 'O podcast preferido do Capitão América.
 
 '
 baseurl: ''
 url: http://histeregue.com.br
+permalink: ":pretty/"
 fonts:
 - Quicksand
 - Righteous
